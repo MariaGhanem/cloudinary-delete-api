@@ -1,15 +1,16 @@
-require("dotenv").config();
-const express = require("express");
-const cors = require("cors");
-const deleteImageRoute = require("./routes/delete-image");
+// index.js
+const express = require('express');
+const bodyParser = require('body-parser');
+const deleteImageRouter = require('./api/delete-image');
 
 const app = express();
-app.use(cors());
-app.use(express.json());
-
-app.use("/delete-image", deleteImageRoute);
-
 const PORT = process.env.PORT || 3000;
+
+app.use(bodyParser.json());
+
+// نقاط النهاية
+app.use('/', deleteImageRouter);
+
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
