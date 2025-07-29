@@ -2,10 +2,11 @@ const express = require("express");
 const router = express.Router();
 const cloudinary = require("cloudinary").v2;
 
+// استخدام متغيرات البيئة بدلاً من القيم الثابتة
 cloudinary.config({
-  cloud_name: "diuwox1o6",
-  api_key: "725275734184246",
-  api_secret: "6iVigYeWyitBbExZF70TEmJbcd4"
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
 router.post("/", async (req, res) => {
